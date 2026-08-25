@@ -196,6 +196,27 @@ button{font-family:inherit; cursor:pointer;}
   will-change:transform;
 }
 
+/* ============ Hero: sketch-to-photo reveal ============ */
+.hero-sketch, .hero-photo{
+  position:absolute; inset:0;
+  background-size:cover;
+  background-position:center;
+  transition:opacity 2.6s cubic-bezier(.4,0,.2,1);
+}
+.hero-sketch{
+  filter:grayscale(1) contrast(2.5) brightness(1.35) sepia(.15);
+  opacity:1;
+}
+.hero-photo{
+  opacity:0;
+}
+.hero.sketch-revealed .hero-sketch{ opacity:0; }
+.hero.sketch-revealed .hero-photo{ opacity:1; }
+@media (prefers-reduced-motion: reduce){
+  .hero-sketch{ opacity:0 !important; transition:none; }
+  .hero-photo{ opacity:1 !important; transition:none; }
+}
+
 /* ============ Hero ============ */
 .hero{
   position:relative;

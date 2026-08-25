@@ -46,6 +46,20 @@ window.addEventListener('scroll', () => {
 
 window.addEventListener('resize', updateParallax);
 
+// ============ Hero: sketch-to-photo reveal ============
+// The hero starts as a high-contrast "sketch" pass of the same photo, then
+// crossfades into the real image shortly after load — no extra image asset needed.
+const heroSection = document.querySelector('.hero');
+if (heroSection){
+  if (reduceMotion){
+    heroSection.classList.add('sketch-revealed');
+  } else {
+    const revealHero = () => setTimeout(() => heroSection.classList.add('sketch-revealed'), 650);
+    if (document.readyState === 'complete') revealHero();
+    else window.addEventListener('load', revealHero);
+  }
+}
+
 // ============ Scroll reveal ============
 const revealEls = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window){
