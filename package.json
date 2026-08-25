@@ -1,15 +1,12 @@
 {
   "name": "gnt-solutions-website",
   "version": "1.0.0",
-  "description": "G&T Solutions - Commercial Interior Fitout & Workspaces",
-  "main": "server.js",
+  "private": true,
+  "description": "G&T Solutions marketing site",
   "scripts": {
     "start": "node server.js"
   },
-  "dependencies": {
-    "express": "^4.18.2"
-  },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18"
   }
 }

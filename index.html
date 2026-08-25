@@ -3,31 +3,275 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>G&T Solutions — Coming Soon</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Helvetica Neue', sans-serif;
-    background: #fff;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .wrap { text-align: center; }
-  img { width: 180px; margin: 0 auto 2rem; display: block; }
-  h1 { font-size: 1rem; font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase; color: #333; }
-  .dot { display: block; width: 40px; height: 2px; background: #E07020; margin: 1.5rem auto; }
-  p { font-size: 0.8rem; font-weight: 300; letter-spacing: 0.1em; color: #999; }
-</style>
+<title>G&amp;T Solutions — Workspaces · Interior Fitout · Furniture</title>
+<meta name="description" content="G&T Solutions is a one-window fit-out studio delivering commercial interiors, workspaces, retail, hospitality and museum spaces — from shop drawings to the final finishing detail.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="wrap">
-    <img src="logo.png" alt="G&T Solutions">
-    <span class="dot"></span>
-    <h1>New Website Coming Soon</h1>
-    <span class="dot"></span>
-    <p>gntsworks.com</p>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">
+      <span class="logo-mark">G<span class="amp">&amp;</span>T</span>
+      <span class="logo-sub">Solutions</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#services">What We Do</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Start a project</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="parallax-bg" data-speed="0.4" style="background-image:url('images/hero-reception.jpg')"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content reveal">
+      <p class="eyebrow">Workspaces &nbsp;·&nbsp; Interior Fitout &nbsp;·&nbsp; Furniture</p>
+      <h1>We design spaces<br>that work as hard as you do.</h1>
+      <p class="hero-sub">A one-window fit-out studio — from shop drawings to the last finishing detail — for offices, retail, restaurants and museums across India.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Start a project</a>
+        <a href="#work" class="btn btn-ghost">See our work</a>
+      </div>
+    </div>
+    <div class="scroll-cue reveal">
+      <span></span>
+      <p>Scroll</p>
+    </div>
+  </section>
+
+  <!-- ABOUT / INTRO -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <p class="eyebrow reveal">About G&amp;T</p>
+      <h2 class="reveal">A one-window solution,<br>from drawing to detail.</h2>
+      <p class="lead reveal">With a wide range of fit-out projects across the country, G&amp;T Solutions has delivered commercial interiors, workspaces, restaurants and eateries for clients who care about the details. We take on shop drawings, interior construction, lighting design, custom furniture, signage, artwork and installation — all under one roof — so the ethos of your brand comes alive in the space it lives in.</p>
+      <div class="stat-row reveal">
+        <div class="stat">
+          <span class="stat-num">150+</span>
+          <span class="stat-label">Projects delivered</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">6</span>
+          <span class="stat-label">Sectors served</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">1</span>
+          <span class="stat-label">Window, start to finish</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <p class="eyebrow reveal">What We Do</p>
+      <h2 class="reveal">Every layer of the space,<br>handled in-house.</h2>
+      <div class="services-grid">
+        <div class="service reveal">
+          <span class="service-num">01</span>
+          <h3>Shop Drawings</h3>
+          <p>Detailed working drawings that take a concept from design intent to something a site team can actually build.</p>
+        </div>
+        <div class="service reveal">
+          <span class="service-num">02</span>
+          <h3>Interior Construction</h3>
+          <p>End-to-end civil and interior execution, managed with the systematic, multi-tiered quality checks a live site demands.</p>
+        </div>
+        <div class="service reveal">
+          <span class="service-num">03</span>
+          <h3>Lighting Design</h3>
+          <p>Layered lighting that shapes how a space feels — ambient, task and accent, tuned to the brand and the room.</p>
+        </div>
+        <div class="service reveal">
+          <span class="service-num">04</span>
+          <h3>Custom Furniture</h3>
+          <p>Furniture built to the space rather than fitted around it, in materials chosen to last under daily use.</p>
+        </div>
+        <div class="service reveal">
+          <span class="service-num">05</span>
+          <h3>Signage &amp; Branding</h3>
+          <p>Signage, wayfinding and brand moments that carry the identity through from the street to the last room.</p>
+        </div>
+        <div class="service reveal">
+          <span class="service-num">06</span>
+          <h3>Artwork &amp; Installation</h3>
+          <p>Bespoke artwork, murals and installations, sourced or fabricated and installed as part of the same project.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK / PORTFOLIO -->
+  <section class="work" id="work">
+    <div class="section-inner">
+      <p class="eyebrow reveal">Selected Work</p>
+      <h2 class="reveal">Spaces we've helped bring to life.</h2>
+      <p class="lead reveal work-note">A cross-section of recent projects across corporate, hospitality, retail and cultural spaces. Project names to follow shortly.</p>
+    </div>
+
+    <div class="work-panel">
+      <div class="parallax-bg" data-speed="0.25" style="background-image:url('images/reception-modern.jpg')"></div>
+      <div class="work-panel-overlay"></div>
+      <div class="work-panel-content reveal">
+        <span class="work-tag">Corporate &amp; Workspaces</span>
+        <h3>Offices built for how people actually work.</h3>
+      </div>
+    </div>
+
+    <div class="work-grid section-inner">
+      <figure class="work-card reveal">
+        <img src="images/boardroom.jpg" alt="Corporate boardroom fit-out" loading="lazy">
+        <figcaption>Boardrooms &amp; Meeting Spaces</figcaption>
+      </figure>
+      <figure class="work-card reveal">
+        <img src="images/legal-office.jpg" alt="Law firm office interior" loading="lazy">
+        <figcaption>Legal &amp; Professional Offices</figcaption>
+      </figure>
+      <figure class="work-card reveal">
+        <img src="images/corporate-branding.jpg" alt="Branded corporate reception" loading="lazy">
+        <figcaption>Corporate Reception &amp; Branding</figcaption>
+      </figure>
+      <figure class="work-card reveal">
+        <img src="images/lounge-space.jpg" alt="Office breakout lounge" loading="lazy">
+        <figcaption>Breakout &amp; Lounge Spaces</figcaption>
+      </figure>
+    </div>
+
+    <div class="work-panel">
+      <div class="parallax-bg" data-speed="0.25" style="background-image:url('images/restaurant-concept.jpg')"></div>
+      <div class="work-panel-overlay"></div>
+      <div class="work-panel-content reveal">
+        <span class="work-tag">Hospitality &amp; F&amp;B</span>
+        <h3>Restaurants and cafés designed to be remembered.</h3>
+      </div>
+    </div>
+
+    <div class="work-grid section-inner">
+      <figure class="work-card reveal">
+        <img src="images/cafe-greenery.jpg" alt="Café interior with living green wall" loading="lazy">
+        <figcaption>Café &amp; Dining</figcaption>
+      </figure>
+      <figure class="work-card reveal">
+        <img src="images/retail-entrance.jpg" alt="Retail storefront entrance" loading="lazy">
+        <figcaption>Retail Entrances</figcaption>
+      </figure>
+      <figure class="work-card wide reveal">
+        <img src="images/museum-exhibit.jpg" alt="Museum exhibition installation" loading="lazy">
+        <figcaption>Museums &amp; Exhibitions</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="parallax-bg" data-speed="0.3" style="background-image:url('images/museum-exhibit.jpg')"></div>
+    <div class="process-overlay"></div>
+    <div class="section-inner process-content">
+      <p class="eyebrow reveal">Our Process</p>
+      <h2 class="reveal">We work smart, not just hard.</h2>
+      <p class="lead reveal">As a team, we love what we do and are in love with our deliverables — that's what keeps our spirits high through a live site. Every project runs systematic and multi-tiered, with quality checks at every step, and we keep clients updated throughout so nothing arrives as a surprise.</p>
+      <div class="process-steps reveal">
+        <div class="process-step">
+          <span>01</span>
+          <p>Brief &amp; Concept</p>
+        </div>
+        <div class="process-step">
+          <span>02</span>
+          <p>Design &amp; Drawings</p>
+        </div>
+        <div class="process-step">
+          <span>03</span>
+          <p>Execution &amp; QC</p>
+        </div>
+        <div class="process-step">
+          <span>04</span>
+          <p>Handover</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner contact-grid">
+      <div class="contact-info reveal">
+        <p class="eyebrow">Get In Touch</p>
+        <h2>Tell us about your space.</h2>
+        <p class="lead">Whether it's a new office, a retail rollout or a single room that needs to feel right — send us a few details and we'll get back to you.</p>
+        <ul class="contact-details">
+          <li>
+            <span class="contact-label">Address</span>
+            <span>C 269, Sector 10, Noida (U.P.), India</span>
+          </li>
+          <li>
+            <span class="contact-label">Phone</span>
+            <a href="tel:+911204322277">+91 120 4322277</a>
+          </li>
+          <li>
+            <span class="contact-label">Email</span>
+            <a href="mailto:info@gtsworks.in">info@gtsworks.in</a>
+          </li>
+        </ul>
+      </div>
+
+      <form class="contact-form reveal" id="contactForm" action="mailto:info@gtsworks.in" method="post" enctype="text/plain">
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="Name" required>
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="Email" required>
+        </div>
+        <div class="form-row">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="Phone">
+        </div>
+        <div class="form-row">
+          <label for="message">Tell us about your project</label>
+          <textarea id="message" name="Message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Send enquiry</button>
+        <p class="form-note">This opens your email app with the message pre-filled — nothing is sent silently.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="section-inner footer-inner">
+    <a href="#top" class="nav-logo">
+      <span class="logo-mark">G<span class="amp">&amp;</span>T</span>
+      <span class="logo-sub">Solutions</span>
+    </a>
+    <p class="footer-tagline">Workspaces · Interior Fitout · Furniture</p>
+    <div class="footer-social">
+      <a href="https://facebook.com/gtsworks" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://instagram.com/gtsworks" target="_blank" rel="noopener">Instagram</a>
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <p class="footer-copy">&copy; <span id="year"></span> G&amp;T Solutions. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
