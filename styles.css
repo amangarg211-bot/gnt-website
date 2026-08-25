@@ -214,9 +214,6 @@ button{font-family:inherit; cursor:pointer;}
 }
 .hero-video.active{ opacity:1; }
 .hero-media.video-active .hero-poster{ opacity:0; }
-@media (max-width:700px){
-  .hero-video{ display:none; }
-}
 @media (prefers-reduced-motion: reduce){
   .hero-video{ display:none; }
 }

@@ -48,15 +48,14 @@ window.addEventListener('resize', updateParallax);
 
 // ============ Hero: video carousel ============
 // Cycles through a few short, muted, silent loops behind the hero text.
-// Skipped entirely (falls back to the static poster photo) on small screens,
-// slow connections or reduced-motion — videos are never fetched in that case.
+// Runs on all screen sizes now; still skipped (falls back to the static
+// poster photo) for reduced-motion or an explicit data-saver preference.
 (function initHeroVideo(){
   const heroMedia = document.getElementById('heroMedia');
   if (!heroMedia) return;
 
-  const isSmallScreen = window.innerWidth < 700;
   const saveData = navigator.connection && navigator.connection.saveData;
-  if (reduceMotion || isSmallScreen || saveData) return;
+  if (reduceMotion || saveData) return;
 
   const videos = Array.from(heroMedia.querySelectorAll('.hero-video'));
   if (!videos.length) return;
