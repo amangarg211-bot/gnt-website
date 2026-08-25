@@ -46,19 +46,57 @@ window.addEventListener('scroll', () => {
 
 window.addEventListener('resize', updateParallax);
 
-// ============ Hero: sketch-to-photo reveal ============
-// The hero starts as a high-contrast "sketch" pass of the same photo, then
-// crossfades into the real image shortly after load — no extra image asset needed.
-const heroSection = document.querySelector('.hero');
-if (heroSection){
-  if (reduceMotion){
-    heroSection.classList.add('sketch-revealed');
-  } else {
-    const revealHero = () => setTimeout(() => heroSection.classList.add('sketch-revealed'), 650);
-    if (document.readyState === 'complete') revealHero();
-    else window.addEventListener('load', revealHero);
+// ============ Hero: video carousel ============
+// Cycles through a few short, muted, silent loops behind the hero text.
+// Skipped entirely (falls back to the static poster photo) on small screens,
+// slow connections or reduced-motion — videos are never fetched in that case.
+(function initHeroVideo(){
+  const heroMedia = document.getElementById('heroMedia');
+  if (!heroMedia) return;
+
+  const isSmallScreen = window.innerWidth < 700;
+  const saveData = navigator.connection && navigator.connection.saveData;
+  if (reduceMotion || isSmallScreen || saveData) return;
+
+  const videos = Array.from(heroMedia.querySelectorAll('.hero-video'));
+  if (!videos.length) return;
+
+  const CYCLE_MS = 6500;
+  let current = 0;
+
+  function playVideo(v){
+    v.currentTime = 0;
+    const p = v.play();
+    if (p && p.catch) p.catch(() => {});
   }
-}
+
+  function activate(i){
+    videos.forEach((v, idx) => v.classList.toggle('active', idx === i));
+    playVideo(videos[i]);
+    heroMedia.classList.add('video-active');
+  }
+
+  function scheduleNext(){
+    setTimeout(() => {
+      current = (current + 1) % videos.length;
+      activate(current);
+      scheduleNext();
+    }, CYCLE_MS);
+  }
+
+  // Load sources only now that we've decided to actually play video.
+  // preload="none" means setting .src alone won't start fetching — call
+  // .load() explicitly so playback actually begins.
+  videos.forEach(v => {
+    v.querySelectorAll('source').forEach(s => { s.src = s.dataset.src; });
+    v.load();
+  });
+
+  const first = videos[0];
+  const start = () => { activate(0); scheduleNext(); };
+  if (first.readyState >= 3) start();
+  else first.addEventListener('canplay', start, { once: true });
+})();
 
 // ============ Scroll reveal ============
 const revealEls = document.querySelectorAll('.reveal');
