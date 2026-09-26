@@ -88,8 +88,9 @@ button{font-family:inherit; cursor:pointer;}
 }
 .nav-logo{
   display:flex;
-  align-items:center;
-  gap:10px;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:3px;
 }
 .nav-logo-icon{
   height:30px;
@@ -99,14 +100,6 @@ button{font-family:inherit; cursor:pointer;}
 .nav-logo-icon.icon-dark{ display:none; }
 .nav.scrolled .nav-logo-icon.icon-light{ display:none; }
 .nav.scrolled .nav-logo-icon.icon-dark{ display:block; }
-.logo-mark{
-  font-size:22px;
-  letter-spacing:0.04em;
-  color:var(--white);
-}
-.nav.scrolled .logo-mark{ color:var(--dark); }
-.footer .logo-mark{ color:var(--white); }
-.amp{ color:var(--orange); font-style:italic; }
 .logo-sub{
   font-size:11px;
   letter-spacing:0.22em;
@@ -675,7 +668,6 @@ h2{
   color:rgba(255,255,255,0.7);
   padding:64px 0 36px;
 }
-.footer .logo-mark{ color:var(--white); }
 .footer-inner{
   display:flex;
   flex-direction:column;
