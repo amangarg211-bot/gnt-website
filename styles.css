@@ -89,7 +89,7 @@ button{font-family:inherit; cursor:pointer;}
 .nav-logo{
   display:flex;
   flex-direction:column;
-  align-items:flex-start;
+  align-items:center;
   gap:3px;
 }
 .nav-logo-icon{
@@ -107,6 +107,15 @@ button{font-family:inherit; cursor:pointer;}
   color:rgba(255,255,255,0.75);
 }
 .nav.scrolled .logo-sub{ color:var(--gray); }
+.logo-tagline{
+  font-size:9px;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.5);
+  white-space:nowrap;
+  margin-top:1px;
+}
+.nav.scrolled .logo-tagline{ color:var(--gray-light); }
 
 .nav-links{
   display:flex;
