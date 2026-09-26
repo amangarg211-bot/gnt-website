@@ -486,6 +486,8 @@ h2{
 }
 .marquee{
   position:relative;
+  display:flex;
+  align-items:center;
   width:100%;
   overflow:hidden;
   -webkit-mask-image:linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
@@ -494,12 +496,13 @@ h2{
 .marquee-track{
   display:flex;
   align-items:center;
+  flex-shrink:0;
   width:max-content;
   animation:marqueeScroll 38s linear infinite;
 }
 .marquee:hover .marquee-track{ animation-play-state:paused; }
 .marquee-track img{
-  height:34px;
+  height:44px;
   width:auto;
   flex-shrink:0;
   margin:0 34px;
@@ -709,7 +712,7 @@ h2{
   .stat-row{ gap:36px; }
   .contact-form{ padding:28px; }
   .section-inner{ padding:0 22px; }
-  .marquee-track img{ height:26px; margin:0 22px; }
+  .marquee-track img{ height:32px; margin:0 20px; }
 }
 
 @media (prefers-reduced-motion: reduce){
