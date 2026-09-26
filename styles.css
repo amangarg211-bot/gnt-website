@@ -88,22 +88,30 @@ button{font-family:inherit; cursor:pointer;}
 }
 .nav-logo{
   display:flex;
-  align-items:baseline;
-  gap:8px;
+  align-items:center;
+  gap:10px;
 }
+.nav-logo-icon{
+  height:30px;
+  width:auto;
+  display:block;
+}
+.nav-logo-icon.icon-dark{ display:none; }
+.nav.scrolled .nav-logo-icon.icon-light{ display:none; }
+.nav.scrolled .nav-logo-icon.icon-dark{ display:block; }
 .logo-mark{
   font-size:22px;
   letter-spacing:0.04em;
-  color:var(--dark);
+  color:var(--white);
 }
-.nav.scrolled .logo-mark, .footer .logo-mark{ color:var(--dark); }
-.hero .nav-logo .logo-mark{ color:var(--white); }
+.nav.scrolled .logo-mark{ color:var(--dark); }
+.footer .logo-mark{ color:var(--white); }
 .amp{ color:var(--orange); font-style:italic; }
 .logo-sub{
   font-size:11px;
   letter-spacing:0.22em;
   text-transform:uppercase;
-  color:var(--gray-light);
+  color:rgba(255,255,255,0.75);
 }
 .nav.scrolled .logo-sub{ color:var(--gray); }
 
