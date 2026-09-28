@@ -370,6 +370,27 @@ h2{
   color:var(--gray);
   font-weight:300;
 }
+.service .price-big{
+  display:block;
+  font-size:26px;
+  color:var(--orange);
+  font-weight:400;
+  margin-bottom:14px;
+}
+.service .price-unit{
+  font-size:13px;
+  color:var(--gray);
+  font-weight:300;
+}
+.cost-note{
+  margin-top:28px;
+  padding:18px 22px;
+  background:var(--cream-2);
+  border-left:3px solid var(--orange);
+  font-size:14px;
+  color:var(--gray);
+  line-height:1.6;
+}
 
 /* ============ Work ============ */
 .work-note{ margin-bottom:0; }
