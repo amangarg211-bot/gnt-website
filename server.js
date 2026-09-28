@@ -163,6 +163,17 @@ function serveFile(filePath, req, res, triedHtmlFallback) {
 }
 
 http.createServer((req, res) => {
+  // Canonical host redirect: canonical tags, sitemap.xml and schema.org URLs
+  // all point at https://www.gntsworks.com, so any request that arrives for
+  // the bare apex domain gets a permanent redirect to the www version,
+  // preserving the path and query string. (Sep 2026 — fixes a www/non-www
+  // canonical mismatch flagged during Search Console verification.)
+  const host = (req.headers.host || '').toLowerCase().split(':')[0];
+  if (host === 'gntsworks.com') {
+    res.writeHead(301, { Location: `https://www.gntsworks.com${req.url}` });
+    return res.end();
+  }
+
   if (req.method === 'POST' && req.url === '/api/contact') {
     return handleContact(req, res);
   }
