@@ -143,6 +143,65 @@ navLinks.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => navLinks.classList.remove('open'));
 });
 
+// ============ Contact form ============
+(function initContactForm(){
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  const statusEl = document.getElementById('formStatus');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const defaultStatus = statusEl ? statusEl.textContent : '';
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = form.elements['Name'].value.trim();
+    const email = form.elements['Email'].value.trim();
+    const phone = form.elements['Phone'] ? form.elements['Phone'].value.trim() : '';
+    const message = form.elements['Message'].value.trim();
+    const company = form.elements['Company'] ? form.elements['Company'].value.trim() : '';
+
+    if (!name || !email || !message) {
+      if (statusEl) {
+        statusEl.textContent = 'Please fill in your name, email, and a short message.';
+        statusEl.classList.remove('is-success');
+        statusEl.classList.add('is-error');
+      }
+      return;
+    }
+
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+    if (statusEl) {
+      statusEl.textContent = 'Sending your message…';
+      statusEl.classList.remove('is-success', 'is-error');
+    }
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, phone, message, company }),
+      });
+      const result = await res.json().catch(() => ({}));
+      if (!res.ok || !result.ok) throw new Error(result.error || 'Send failed');
+
+      form.reset();
+      if (statusEl) {
+        statusEl.textContent = "Thanks — your message was sent. We'll get back to you within a business day.";
+        statusEl.classList.remove('is-error');
+        statusEl.classList.add('is-success');
+      }
+    } catch (err) {
+      if (statusEl) {
+        statusEl.textContent = 'Something went wrong sending that — please email aman@gntsworks.com directly.';
+        statusEl.classList.remove('is-success');
+        statusEl.classList.add('is-error');
+      }
+    } finally {
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send enquiry'; }
+    }
+  });
+})();
+
 // ============ Footer year ============
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();

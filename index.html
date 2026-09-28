@@ -3,8 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>G&amp;T Solutions — Workspaces · Interior Fitout · Furniture</title>
-<meta name="description" content="G&T Solutions is a one-window fit-out studio delivering commercial interiors, workspaces, retail, hospitality and museum spaces — from shop drawings to the final finishing detail.">
+<title>G&amp;T Solutions — Office Interior &amp; Fit-Out Company in Noida</title>
+<meta name="description" content="G&T Solutions is a Noida-based turnkey office interior and fit-out company — 500+ projects delivered, 30 lakh sq ft, clients including TCS and Dabur.">
+<link rel="canonical" href="https://gntsworks.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="G&T Solutions">
+<meta property="og:title" content="G&T Solutions — Office Interior & Fit-Out Company in Noida">
+<meta property="og:description" content="Turnkey office interiors, workspaces and furniture. 500+ projects delivered, 30 lakh sq ft, 30 cities, 3 countries. Clients include TCS, Dabur, Hero Group and OYO.">
+<meta property="og:url" content="https://gntsworks.com/">
+<meta property="og:image" content="https://gntsworks.com/android-chrome-512x512.png">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -15,6 +23,54 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "@id": "https://gntsworks.com/#organization",
+  "name": "G&T Solutions",
+  "legalName": "Graphics & Trends Solutions",
+  "url": "https://gntsworks.com/",
+  "logo": "https://gntsworks.com/android-chrome-512x512.png",
+  "image": "https://gntsworks.com/android-chrome-512x512.png",
+  "description": "G&T Solutions is a Noida-based turnkey office interior and fit-out company that has delivered 500+ projects and over 30 lakh sq ft across 30 cities in 3 countries.",
+  "telephone": "+91-120-4322277",
+  "email": "aman@gntsworks.com",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "C 269, Sector 10",
+    "addressLocality": "Noida",
+    "addressRegion": "Uttar Pradesh",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 28.5825,
+    "longitude": 77.3510
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Noida" },
+    { "@type": "City", "name": "Delhi NCR" },
+    { "@type": "City", "name": "Gurgaon" },
+    { "@type": "City", "name": "Greater Noida" },
+    { "@type": "City", "name": "Lucknow" },
+    { "@type": "City", "name": "Coimbatore" }
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Aman Garg",
+    "jobTitle": "Founder",
+    "url": "https://www.linkedin.com/in/aman-garg-6703a118/",
+    "sameAs": ["https://www.linkedin.com/in/aman-garg-6703a118/"]
+  },
+  "sameAs": [
+    "https://www.instagram.com/gnt_solutions/",
+    "https://www.linkedin.com/company/3334864",
+    "https://www.linkedin.com/in/aman-garg-6703a118/"
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -131,7 +187,7 @@
       <p class="lead reveal">G&amp;T Solutions specialises in bringing inanimate objects to life. With a team of experts combining 20 years of experience fabricating commercial fit-outs, workspaces and furniture, we've delivered commercial interiors, workspaces, retail and hospitality projects across the country for clients who care about the details. We take on shop drawings, interior construction, lighting design, custom furniture, signage, artwork and installation — all under one roof — so the ethos of your brand comes alive in the space it lives in.</p>
       <div class="stat-row reveal">
         <div class="stat">
-          <span class="stat-num">700+</span>
+          <span class="stat-num">500+</span>
           <span class="stat-label">Projects delivered</span>
         </div>
         <div class="stat">
@@ -391,7 +447,7 @@
         </ul>
       </div>
 
-      <form class="contact-form reveal" id="contactForm" action="mailto:aman@gntsworks.com" method="post" enctype="text/plain">
+      <form class="contact-form reveal" id="contactForm" novalidate>
         <div class="form-row">
           <label for="name">Name</label>
           <input type="text" id="name" name="Name" required>
@@ -408,8 +464,12 @@
           <label for="message">Tell us about your project</label>
           <textarea id="message" name="Message" rows="4" required></textarea>
         </div>
+        <div class="form-row form-hp" aria-hidden="true">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="Company" tabindex="-1" autocomplete="off">
+        </div>
         <button type="submit" class="btn btn-primary btn-full">Send enquiry</button>
-        <p class="form-note">This opens your email app with the message pre-filled — nothing is sent silently.</p>
+        <p class="form-note" id="formStatus">We usually reply within one business day.</p>
       </form>
     </div>
   </section>
