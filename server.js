@@ -1,11 +1,14 @@
 // Minimal static file server for deploying this site (e.g. on Railway), plus a
 // small /api/contact endpoint that emails enquiries straight to CONTACT_TO via
-// the site's own SMTP account — no third-party form service in the loop.
+// the Resend HTTP email API — no SMTP, no third-party form service in the loop.
+// (Oct 2026: switched from nodemailer/Gmail SMTP after live testing showed every
+// contact-form submission hanging indefinitely — Railway's Hobby/Free plans block
+// outbound SMTP on ports 25/465/587/2525, but never block outbound HTTPS, which
+// is all Resend's API needs.)
 // Listens on process.env.PORT (falls back to 8080 to match the existing Railway domain config).
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const nodemailer = require('nodemailer');
 
 const PORT = process.env.PORT || 8080;
 const ROOT = __dirname;
@@ -60,32 +63,44 @@ async function handleContact(req, res) {
       return res.end(JSON.stringify({ ok: false, error: 'Invalid email address' }));
     }
 
-    const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_TO } = process.env;
-    if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
-      console.error('Contact form: SMTP_HOST/SMTP_USER/SMTP_PASS env vars are not set.');
+    const { RESEND_API_KEY, RESEND_FROM, CONTACT_TO } = process.env;
+    if (!RESEND_API_KEY) {
+      console.error('Contact form: RESEND_API_KEY env var is not set.');
       res.writeHead(500);
       return res.end(JSON.stringify({ ok: false, error: 'Mail is not configured on the server' }));
     }
 
-    const port = Number(SMTP_PORT) || 465;
-    const transporter = nodemailer.createTransport({
-      host: SMTP_HOST,
-      port,
-      secure: port === 465, // true for 465 (SSL), false for 587 (STARTTLS)
-      auth: { user: SMTP_USER, pass: SMTP_PASS },
+    // Default "from" uses Resend's own shared test domain, which works with no
+    // DNS setup. Once a custom domain is verified in Resend, set RESEND_FROM to
+    // an address on gntsworks.com (e.g. "G&T Solutions Website <hello@gntsworks.com>").
+    const fromAddress = RESEND_FROM || 'G&T Solutions Website <onboarding@resend.dev>';
+    const toAddress = CONTACT_TO || 'aman@gntsworks.com';
+
+    const resendResp = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: fromAddress,
+        to: [toAddress],
+        reply_to: `${name} <${email}>`,
+        subject: `New enquiry from ${name} — G&T Solutions website`,
+        text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || '—'}\n\nMessage:\n${message}`,
+        html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p>` +
+          `<p><strong>Email:</strong> ${escapeHtml(email)}</p>` +
+          `<p><strong>Phone:</strong> ${escapeHtml(phone) || '—'}</p>` +
+          `<p><strong>Message:</strong><br>${escapeHtml(message).replace(/\n/g, '<br>')}</p>`,
+      }),
     });
 
-    await transporter.sendMail({
-      from: `"G&T Solutions Website" <${SMTP_USER}>`,
-      to: CONTACT_TO || SMTP_USER,
-      replyTo: `"${name}" <${email}>`,
-      subject: `New enquiry from ${name} — G&T Solutions website`,
-      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || '—'}\n\nMessage:\n${message}`,
-      html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p>` +
-        `<p><strong>Email:</strong> ${escapeHtml(email)}</p>` +
-        `<p><strong>Phone:</strong> ${escapeHtml(phone) || '—'}</p>` +
-        `<p><strong>Message:</strong><br>${escapeHtml(message).replace(/\n/g, '<br>')}</p>`,
-    });
+    if (!resendResp.ok) {
+      const errText = await resendResp.text().catch(() => '');
+      console.error('Contact form: Resend API error', resendResp.status, errText);
+      res.writeHead(500);
+      return res.end(JSON.stringify({ ok: false, error: 'Server error sending message' }));
+    }
 
     res.writeHead(200);
     res.end(JSON.stringify({ ok: true }));
